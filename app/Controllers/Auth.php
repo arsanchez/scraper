@@ -9,8 +9,37 @@ class Auth extends BaseController
 
     public function login()
     {
-        $data = [];
-        return view('auth/login', $data);
+        if (! $this->request->is('post')) {
+            return view('auth/login');
+        }
+
+        $session = session();
+        $accountModel = new AccountModel();
+        $username = $this->request->getVar('username');
+        $password = $this->request->getVar('password');
+
+        $data = $accountModel->where('username', $username)->first();
+
+        if($data){
+            $pass = $data['password'];
+            $valid = password_verify($password, $pass);
+            if($valid){
+                $ses_data = [
+                    'id' => $data['id'],
+                    'username' => $data['username'],
+                    'isLoggedIn' => TRUE
+                ];
+                $session->set($ses_data);
+                return redirect()->redirect("/");
+
+            }else{
+                $session->setFlashdata('msg', 'Password is incorrect.');
+                return redirect()->redirect("/auth/login");
+            }
+        }else{
+            $session->setFlashdata('msg', 'Email does not exist.');
+            return redirect()->redirect("/auth/login");
+        }
     }
 
     public function signup()
