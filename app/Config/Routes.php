@@ -36,6 +36,12 @@ $routes->post('/auth/login', 'Auth::login');
 $routes->get('/auth/signup', 'Auth::signup');
 $routes->post('/auth/signup', 'Auth::signup');
 
+// Page scraping routes
+$routes->post('/scrape_page', 'Home::scrape_page');
+$routes->get('/get_pages', 'Home::get_pages', ['filter' => 'AuthFilter']);
+$routes->get('/get_links/(:num)', 'Home::get_page_links/$1', ['filter' => 'AuthFilter']);
+$routes->get('/get_links_table/(:num)', 'Home::get_page_links_table/$1', ['filter' => 'AuthFilter']);
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

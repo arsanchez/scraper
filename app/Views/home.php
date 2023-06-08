@@ -6,33 +6,42 @@ $this->section('content');
 
 <h1>Scraped sites</h1>
 
-<div class="form-group">
-    <input type="text" class="form-control" id="search" placeholder="Search">
+<div class="row">
+    <div class="col-md-6 ">
+        <input type="text" class="form-control" placeholder="Scrape" id="new_scrape_page">
+    </div>
+    <div class="col-md-6 ">
+        <div class="input-group mb-3">
+            <a class="btn btn-primary" type="button" id="add_page">Scrape</a>
+        </div>
+    </div>
 </div>
 
-<table class="table table-bordered">
+
+<table class="table table-bordered" id="sites_table">
     <thead>
     <tr>
-        <th>ID</th>
         <th>Name</th>
-        <th>Email</th>
+        <th>Total links</th>
+        <th>ID</th>
     </tr>
     </thead>
-    <tbody>
-    <tr>
-        <td>1</td>
-        <td>John Doe</td>
-        <td>johndoe@example.com</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>Jane Smith</td>
-        <td>janesmith@example.com</td>
-    </tr>
-    <!-- Add more table rows here -->
-    </tbody>
+    <tfoot>
+        <th>Name</th>
+        <th>Total links</th>
+        <th>ID</th>
+    </tfoot>
 </table>
 
 <?php
-$this->endSection()
+$this->endSection();
+$this->section('scripts');
 ?>
+
+<script type="text/javascript" src="<?php echo base_url('js/home.js'); ?>"></script>
+
+<?php
+$this->endSection();
+?>
+
+

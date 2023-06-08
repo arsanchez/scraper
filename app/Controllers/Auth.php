@@ -49,8 +49,8 @@ class Auth extends BaseController
         }
 
         $rules = [
-            'username'          => 'required|min_length[2]|max_length[50]',
-            'password'      => 'required|min_length[4]|max_length[50]',
+            'username'         => 'required|min_length[2]|max_length[50]',
+            'password'         => 'required|min_length[4]|max_length[50]',
             'confirmpassword'  => 'matches[password]'
         ];
 
