@@ -35,6 +35,7 @@ $routes->get('/auth/login', 'Auth::login');
 $routes->post('/auth/login', 'Auth::login');
 $routes->get('/auth/signup', 'Auth::signup');
 $routes->post('/auth/signup', 'Auth::signup');
+$routes->get('/auth/logout', 'Auth::logout');
 
 // Page scraping routes
 $routes->post('/scrape_page', 'Home::scrape_page');
